@@ -1,0 +1,33 @@
+/**
+.line {
+display:block;
+}
+**/
+
+td.vertex {
+background-color:purple;
+height:10px;
+width:10px;
+}
+
+td.cell {
+background-color:white;
+width:50px;
+height:50px;
+}
+
+td.top, td.bottom {
+background-color:lightgray;
+width:10px;
+height:50px;
+}
+
+td.left, td.right {
+background-color:lightgray;
+width:50px;
+height:10px;
+}
+
+td.filledLine, td.vline:hover, td.hline:hover, td.top:hover, td.bottom:hover, td.left:hover, td.right:hover {
+background-color:purple;
+}
