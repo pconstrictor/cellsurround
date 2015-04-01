@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8"/>
-  <script src="head.load.min.js"></script>
-</head> 
+<meta charset="UTF-8" />
+<script src="head.load.min.js"></script>
+</head>
 <body>
-<p>Welcome to CellSurround, a 'Dots and Boxes' game.</p>
-<p id="app1">[The game grid]</p>
-<p> &nbsp; </p> 
-<p> And just in case you want to play two games at once... [verifies the app has no obvious name collisions] </p>
-<p id="app2">[Sanity check: a second game grid]</p>
+	<p>Welcome to CellSurround, a 'Dots and Boxes' game.</p>
+	<p id="app1">[The game grid]</p>
+	<p>&nbsp;</p>
+	<p>And just in case you want to play two games at once... [verifies
+		the app has no obvious name collisions]</p>
+	<p id="app2">[Sanity check: a second game grid]</p>
 
-<script>
-// queue scripts and fire a callback when loading is finished
-head.load("main.css", "utils.js", "models/gameModel.js", "views/gameView.js", "game.js", function() {
-    // loading is done; let's go
+	<script>
+        // queue scripts and fire a callback when loading is finished
+        head.load("main.css", "utils.js", "models/gameModel.js",
+                "views/gameView.js", "game.js", function() {
+                    // loading is done; let's go
 
-	appId = "app1";
-	JSGRID.app1 = new JSGRID.App(appId);
-	
-	// sanity check: can multiple copies run independently, with no name collisions?
-	appId2 = "app2";
-	JSGRID.app2 = new JSGRID.App(appId2);
+                    appId = "app1";
+                    JSGRID.app1 = new JSGRID.App(appId);
 
+                    // sanity check: can multiple copies run independently, with no name collisions?
+                    appId2 = "app2";
+                    JSGRID.app2 = new JSGRID.App(appId2);
 
-});
-
-</script>
+                });
+    </script>
 
 </body>
 </html>
