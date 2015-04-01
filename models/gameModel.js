@@ -25,11 +25,11 @@ JSGRID.Player.prototype.toString = function () {
 }
 */
 
-// JSGRID.nullPlayer = new JSGRID.Player('', '', 'yellow');
+// JSGRID.nullPlayer = new JSGRID.Player('', '', 'yellow');  // Null pattern to avoid crashes, but prob not worth it (since it's not false)
 
 JSGRID.PlayerList = function (count) {
 
-	var colors = ['tan', 'pink', 'lightblue', 'lightyellow', 'lightgreen', 'lightgray', 'lavender']  // hmm, too UI-related?
+	var colors = ['tan', 'lightblue', 'pink', 'lightgreen', 'lightgray', 'lightyellow', 'lavender']  // hmm, too UI-related?
 	this._currentPlayer = 0;
 	this._players = [];
 	

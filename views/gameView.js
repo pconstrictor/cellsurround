@@ -89,7 +89,7 @@ JSGRID.SquareGridView = function (gameModel, appId, resetFuncString) {
 			c += td.filled ? ' filledLine' : '';
 		}
 				
-		var tmp = '    <td class="' + c + '" id="' + id + '" ' + click + bg + '> <div class="' + c + '"> ' + content + ' </div> </td> \n';  //  + '" hover="background-color:purple" ' 
+		var tmp = '    <td class="' + c + '" id="' + id + '" ' + click + bg + '> <div class="' + c + '"> ' + content + ' </div> </td> \n';
 		return tmp;
 	}
 
