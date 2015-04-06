@@ -1,10 +1,18 @@
 "use strict";
 
+
+
 // JSGRID is our one global variable, our 'namespace', so as to not pollute the
 // global namespace.
-var JSGRID = {};
+var JSGRID = {};  // TODO: in the future, change this to let
+if  (typeof module !== 'undefined' && this.module !== module) {
+    // We're in a node.js type of environment; e.g. used for our mocha tests
+    module.exports = JSGRID;
+}
 
 // TODO: move more functions out of constructors and into prototypes
+// Note: For the current simple stuff, passive control flow via 'refreshing' works.
+// See detectSurrounded(), tryTurn(), nextPlayer(), and message()
 
 // PLAYER MODEL ---------
 
@@ -17,7 +25,7 @@ JSGRID.Player = function(name, abbr, color) {
     this.toString = function() {
         return '' + name;
     }
-}
+};
 
 /*
  * this didn't work for FF debug... JSGRID.Player.prototype.toString = function () {
@@ -40,16 +48,16 @@ JSGRID.PlayerList = function(count) {
 
     this.all = function() {
         return this._players;
-    }
+    };
 
     this.get = function(i) {
         return this._players[i];
-    }
+    };
 
     this.firstPlayer = function() {
         this._currentPlayer = 0;
         return this._currentPlayer;
-    }
+    };
 
     this.nextPlayer = function() {
         this._currentPlayer++;
@@ -57,11 +65,11 @@ JSGRID.PlayerList = function(count) {
             this._currentPlayer = 0; // wrap around
         }
         return this.currentPlayer();
-    }
+    };
 
     this.currentPlayer = function() { // TODO: use property syntax instead
         return this._players[this._currentPlayer];
-    }
+    };
 
     this.totalScore = function() {
         var ps = this._players;
@@ -71,7 +79,7 @@ JSGRID.PlayerList = function(count) {
             total += ps[i].score;
         }
         return total
-    }
+    };
 
     this.allScores = function() {
         var ps = this._players;
@@ -81,9 +89,9 @@ JSGRID.PlayerList = function(count) {
             msg += ps[i].name + ': ' + ps[i].score + '  ';
         }
         return msg;
-    }
+    };
 
-}
+};
 
 // GAME MODEL ---------
 
@@ -103,14 +111,14 @@ JSGRID.Game = function(gridModel) {
                     + ', '
                     + 'select any line. If this causes a cell (or two) to be completely surrounded, it will become yours, and you will get an extra turn. \n'
                     + '<br/>' + "Current scores: " + ps.allScores(); // TODO:
-                                                                        // eliminate
-                                                                        // the
-                                                                        // <br/>
+            // eliminate
+            // the
+            // <br/>
         }
         return msg;
 
     }
-}
+};
 
 // GRID MODEL ---------
 
@@ -119,7 +127,7 @@ JSGRID.Side = function() {
     this.toString = function() {
         return this.filled ? 'Y' : 'N';
     }
-}
+};
 
 /*
  * JSGRID.Side.prototype.toString = function () { return this.filled ? 'Y' :
@@ -164,7 +172,7 @@ JSGRID.Cell = function(sides) {
             }
         }
     }
-}
+};
 
 // Creates a square cell, mostly from scratch, but if it's to the right
 // of or below an existing cell, you must pass in the cells that share sides.
@@ -254,14 +262,14 @@ JSGRID.SquareGrid = function(width, height, players) {
         }
         cell.fillSide(side, player); // we only do this once (trusting our sides are shared as needed)
         var cell2 = this.getNeighbor(row, col, side);
-        cell2.detectSurrounded(player); //refresh the neighbor
+        cell2.detectSurrounded(player); // refresh the neighbor
         if (!(cell.owner || cell2.owner)) {
             this.players.nextPlayer(); // current one didn't earn an extra turn here
         }
-    }
+    };
 
     this.reset(width, height, players); // i.e. init
 }
 
-//For the current simple stuff, passive control flow via refresh works.
-//See tryTurn(), nextPlayer(), and message()
+
+

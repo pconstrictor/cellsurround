@@ -1,6 +1,8 @@
 "use strict";
 
-// Extensions to JS
+// "extension methods"
+
+//Augment Number ----------
 
 Number.prototype.isOdd = function() {
     return this % 2;
@@ -17,8 +19,8 @@ String.prototype.trim = function() { // [Crockford]
 
 // Augment Object ----------
 
-// after the specified delay (ms), run the specified method on this object
-// example: my_object.later(1000, "erase", true)
+// After the specified delay (ms), run the specified method on this object.  [Crockford]
+// Example: my_object.later(1000, "erase", true)
 if (typeof Object.prototype.later != 'function') {
     Object.prototype.later = function(ms, method) {
         var that = this // make this available to closures
@@ -34,3 +36,6 @@ if (typeof Object.prototype.later != 'function') {
         return that;
     };
 }
+
+//export default null;  // nothing to export; it's all side effects
+

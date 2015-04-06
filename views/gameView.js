@@ -11,7 +11,7 @@ JSGRID.SquareGridView = function(gameModel, appId, resetFuncString) {
     }
 
     this.getElement = function(id) {
-        var fullId = this.makeElementId(id)
+        var fullId = this.makeElementId(id);
         return document.getElementById(fullId);
     }
 

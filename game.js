@@ -6,16 +6,16 @@ JSGRID.App = function(appId) {
 
     this._appId = appId;
 
-    this.getResetFuncString = function() {
+    var gm = JSGRID;
+    //var gm = require ("models/gameModel");
 
-    }
 
     this.init = function() {
         var w = 4, h = 4;
         // this._players = ['player1', 'player2'];
-        var players = new JSGRID.PlayerList(2);
-        var gridModel = new JSGRID.SquareGrid(w, h, players);
-        this.gameModel = new JSGRID.Game(gridModel);
+        var players = new gm.PlayerList(2);
+        var gridModel = new gm.SquareGrid(w, h, players);
+        this.gameModel = new gm.Game(gridModel);
         var resetFuncString = 'JSGRID.' + this._appId + '.init()'; // a
                                                                     // plain-string
                                                                     // callback
